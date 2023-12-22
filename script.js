@@ -1,28 +1,38 @@
-const countdown = document.querySelector(".countdown");
-const elDays = document.querySelector(".days");
-const elHours = document.querySelector(".hours");
-const elMinutes = document.querySelector(".minutes");
-const elSeconds = document.querySelector(".seconds");
 
-const interval = setInterval(() => {
-  const deadline = new Date(2024, 5, 11, 14, 30, 0);
+function handleTickInit(tick) {
 
-  const current = new Date();
+  var locale = {
+    YEAR_PLURAL: 'Jahren',
+    YEAR_SINGULAR: 'Jahr',
+    MONTH_PLURAL: 'Monaten',
+    MONTH_SINGULAR: 'Monat',
+    WEEK_PLURAL: 'Wochen',
+    WEEK_SINGULAR: 'Woche',
+    DAY_PLURAL: 'Tagen',
+    DAY_SINGULAR: 'Tag',
+    HOUR_PLURAL: 'Stunden',
+    HOUR_SINGULAR: 'Stunde',
+    MINUTE_PLURAL: 'Minuten',
+    MINUTE_SINGULAR: 'Minute',
+    SECOND_PLURAL: 'Sekunden',
+    SECOND_SINGULAR: 'Sekunde',
+    MILLISECOND_PLURAL: 'Millisekunden',
+    MILLISECOND_SINGULAR: 'Millisekunde'
+  };
 
-  const diff = deadline - current;
-
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24)) + "";
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24) + "";
-  const minutes = Math.floor((diff / (1000 * 60)) % 60) + "";
-  const seconds = Math.floor((diff / 1000) % 60) + "";
-
-  elDays.innerHTML = `${days.length === 1 ? `0${days}` : days}`;
-  elHours.innerHTML = `${hours.length === 1 ? `0${hours}` : hours}`;
-  elMinutes.innerHTML = `${minutes.length === 1 ? `0${minutes}` : minutes}`;
-  elSeconds.innerHTML = `${seconds.length === 1 ? `0${seconds}` : seconds}`;
-
-  if (diff < 0) {
-    clearInterval(interval);
-    countdown.innerHTML = "<h1>Just married!!!</h1>";
+  for (var key in locale) {
+    if (!locale.hasOwnProperty(key)) { continue; }
+    tick.setConstant(key, locale[key]);
   }
-}, 1000);
+
+  var counter = Tick.count.down('2024-05-11T14:30:00+01:00');
+
+  counter.onupdate = function (value) {
+    tick.value = value;
+  };
+
+  counter.onended = function () {
+    tick.root.style.display = 'none';
+    document.querySelector('.headline').innerHTML = '<3';
+  }
+}
