@@ -168,3 +168,43 @@ html {
   }
 
 }
+
+@media (max-width: 380px) {
+
+  .countdown-wrapper h1 {
+    font-size: 4rem;
+  }
+
+  .countdown div {
+    width: 8rem;
+    height: 8rem;
+    font-size: 4rem;
+  }
+
+}
+
+@media (max-width: 320px) {
+
+  .countdown-wrapper h1 {
+    font-size: 3rem;
+  }
+
+  .countdown div {
+    width: 7rem;
+    height: 7rem;
+  }
+
+}
+
+@media (max-width: 306px) {
+
+  .countdown-wrapper h1 {
+    font-size: 3rem;
+  }
+
+  .countdown div {
+    width: 6rem;
+    height: 6rem;
+  }
+
+}
