@@ -41,6 +41,17 @@ html {
   }
 }
 
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .container {
   width: 100%;
   height: 100vh;
@@ -52,7 +63,7 @@ html {
 .countdown-wrapper {
   width: 100%;
   position: absolute;
-  top: 15%;
+  top: 10%;
   text-align: center;
   color: #ddd;
 }
@@ -61,13 +72,21 @@ html {
   font-size: 8rem;
   font-weight: 400;
   text-transform: uppercase;
-  margin-bottom: 8rem;
+  margin-bottom: 3rem;
   text-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.5);
 }
 
 .countdown {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10rem;
+
+  /* align grid itself */
+  align-content: center;
   justify-content: center;
+  /* align items */
+  justify-items: center;
+  align-items: center;
 }
 
 .countdown div {
@@ -76,7 +95,7 @@ html {
   background: linear-gradient(to bottom,
       rgba(61, 58, 58, 1) 50%,
       rgba(99, 93, 93, 1) 0);
-  margin: 0 4rem 12rem 4rem;
+  /* margin: 0 4rem 12rem 4rem; */
   font-size: 7rem;
   font-weight: 400;
   display: flex;
@@ -84,6 +103,8 @@ html {
   align-items: center;
   box-shadow: 0 0.8rem 2.5rem rgba(0, 0, 0, 0.5);
   position: relative;
+  opacity: 0;
+  animation: fadeIn 2s ease-in forwards;
 }
 
 .countdown div::before {
@@ -95,19 +116,14 @@ html {
 
 .countdown div::after {
   content: attr(data-content);
-  font-size: 2.2rem;
+  font-size: 3rem;
   font-weight: 400;
   position: absolute;
   bottom: -6rem;
 }
 
-
 /* Be resposive... */
 @media (max-width: 750px) {
-
-  .countdown {
-    flex-wrap: wrap;
-  }
 
   .countdown div {
     font-size: 7rem;
@@ -122,7 +138,7 @@ html {
   }
 
   .countdown div::after {
-    bottom: -4rem;
+    bottom: -5rem;
   }
 }
 
@@ -185,6 +201,10 @@ html {
 
 @media (max-width: 320px) {
 
+  .countdown {
+    gap: 8rem;
+  }
+
   .countdown-wrapper h1 {
     font-size: 3rem;
   }
@@ -198,6 +218,10 @@ html {
 
 @media (max-width: 306px) {
 
+  .countdown {
+    gap: 6rem;
+  }
+
   .countdown-wrapper h1 {
     font-size: 3rem;
   }
@@ -205,6 +229,11 @@ html {
   .countdown div {
     width: 6rem;
     height: 6rem;
+  }
+
+  .countdown div::after {
+    font-size: 2rem;
+    bottom: -3rem;
   }
 
 }

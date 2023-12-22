@@ -1,4 +1,8 @@
 const countdown = document.querySelector(".countdown");
+const elDays = document.querySelector(".days");
+const elHours = document.querySelector(".hours");
+const elMinutes = document.querySelector(".minutes");
+const elSeconds = document.querySelector(".seconds");
 
 const interval = setInterval(() => {
   const deadline = new Date(2024, 5, 11, 14, 30, 0);
@@ -12,15 +16,10 @@ const interval = setInterval(() => {
   const minutes = Math.floor((diff / (1000 * 60)) % 60) + "";
   const seconds = Math.floor((diff / 1000) % 60) + "";
 
-  countdown.innerHTML = `
-    <div data-content="Tagen">${days.length === 1 ? `0${days}` : days}</div>
-    <div data-content="Stunden">${hours.length === 1 ? `0${hours}` : hours
-    }</div>
-    <div data-content="Minuten">${minutes.length === 1 ? `0${minutes}` : minutes
-    }</div>
-    <div data-content="Sekunden">${seconds.length === 1 ? `0${seconds}` : seconds
-    }</div>
-`;
+  elDays.innerHTML = `${days.length === 1 ? `0${days}` : days}`;
+  elHours.innerHTML = `${hours.length === 1 ? `0${hours}` : hours}`;
+  elMinutes.innerHTML = `${minutes.length === 1 ? `0${minutes}` : minutes}`;
+  elSeconds.innerHTML = `${seconds.length === 1 ? `0${seconds}` : seconds}`;
 
   if (diff < 0) {
     clearInterval(interval);
