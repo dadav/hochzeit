@@ -78,7 +78,7 @@ html {
 
 .countdown {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto auto auto auto;
   gap: 10rem;
 
   /* align grid itself */
@@ -120,6 +120,12 @@ html {
   font-weight: 400;
   position: absolute;
   bottom: -6rem;
+}
+
+@media (max-width: 860px) {
+  .countdown {
+    grid-template-columns: auto auto;
+  }
 }
 
 /* Be resposive... */
