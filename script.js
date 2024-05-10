@@ -25,7 +25,7 @@ function handleTickInit(tick) {
     tick.setConstant(key, locale[key]);
   }
 
-  var counter = Tick.count.down('2024-05-11T14:30:00+01:00');
+  var counter = Tick.count.down('2024-05-11T13:30:00+01:00');
 
   counter.onupdate = function (value) {
     tick.value = value;
